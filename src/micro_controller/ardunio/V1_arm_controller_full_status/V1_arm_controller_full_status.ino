@@ -25,7 +25,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
 // Pulse Width Limits (Microseconds)
 // MG996R: ~600us to 2400us. SG90: ~600us to 2400us.
 // We use conservative limits to prevent mechanical binding.
-#define SERVOMIN  600
+#define SERVOMIN  500
 #define SERVOMAX  2400
 
 // =========================================================
@@ -150,17 +150,17 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ESTOP_PIN), eStopISR, RISING);
 
   // --- Initialize ARM 1 to neutral ---
-  setServoAngle(BASE, 90);         delay(200);
-  setServoAngle(SHOULDER, 90);     delay(200);
-  setServoAngle(ELBOW, 90);        delay(200);
-  setServoAngle(WRIST_ROT, 0);     delay(200);
-  setServoAngle(WRIST_PITCH, 90);  delay(200);
-  setServoAngle(GRIPPER, 90);      delay(200); // Open/Neutral
+  setServoAngle(BASE, 90);         delay(500);
+  setServoAngle(SHOULDER, 100);     delay(500);
+  setServoAngle(ELBOW, 97);        delay(500);
+  setServoAngle(WRIST_ROT, 10);     delay(500);
+  setServoAngle(WRIST_PITCH, 45);  delay(5000);
+  setServoAngle(GRIPPER, 90);      delay(500); // Open/Neutral // good enough open // 40- 50 for close 
 
   // --- Initialize ARM 2 to neutral ---
-  setServoAngle(BASE2, 90);        delay(200);
-  setServoAngle(SHOULDER2, 90);    delay(200);
-  setServoAngle(ELBOW2, 90);       delay(200);
+  //setServoAngle(BASE2, 90);        delay(200);
+  //setServoAngle(SHOULDER2, 90);    delay(200);
+  //setServoAngle(ELBOW2, 90);       delay(200);
 }
 
 void loop() {
@@ -173,44 +173,44 @@ void loop() {
   Serial.println("Processing...");
 
   // --- Sweep ARM 1 and ARM 2 to their first test position ---
-  moveJointAnimated(BASE, 45, 1000);
+  moveJointAnimated(BASE, 70, 1000);
   if (checkEStop()) return;
-  moveJointAnimated(SHOULDER, 60, 1000);
+  moveJointAnimated(SHOULDER, 100, 1000);
   if (checkEStop()) return;
-  // moveJointAnimated(ELBOW, 50, 1000);
-  // moveJointAnimated(WRIST_ROT, 95, 500);
-  // moveJointAnimated(WRIST_PITCH, 0, 500);
+  moveJointAnimated(ELBOW, 95, 1000);
+  moveJointAnimated(WRIST_ROT, 0, 500);
+  moveJointAnimated(WRIST_PITCH, 100, 500);
   moveJointAnimated(GRIPPER, 40, 500); // Close gripper
   if (checkEStop()) return;
 
-  moveJointAnimated(BASE2, 45, 1000);
-  if (checkEStop()) return;
-  moveJointAnimated(SHOULDER2, 60, 1000);
-  if (checkEStop()) return;
-  moveJointAnimated(ELBOW2, 50, 1000);
-  if (checkEStop()) return;
+  // moveJointAnimated(BASE2, 45, 1000);
+  // if (checkEStop()) return;
+  // moveJointAnimated(SHOULDER2, 60, 1000);
+  // if (checkEStop()) return;
+  // moveJointAnimated(ELBOW2, 50, 1000);
+  // if (checkEStop()) return;
 
   delay(500);
 
   // --- Return ARM 1 and ARM 2 to their second test position ---
   moveJointAnimated(BASE, 95, 1000);
   if (checkEStop()) return;
-  // moveJointAnimated(SHOULDER, 100, 1000);
-  // if (checkEStop()) return;
-  // moveJointAnimated(ELBOW, 90, 1000);
-  moveJointAnimated(WRIST_ROT, 135, 500);
+  moveJointAnimated(SHOULDER, 100, 1000);
   if (checkEStop()) return;
-  moveJointAnimated(WRIST_PITCH, 10, 500);
+  moveJointAnimated(ELBOW, 95, 1000);
+  moveJointAnimated(WRIST_ROT, 100, 500);
   if (checkEStop()) return;
-  moveJointAnimated(GRIPPER, 100, 500); // Open gripper
+  moveJointAnimated(WRIST_PITCH, 160, 500);
+  if (checkEStop()) return;
+  moveJointAnimated(GRIPPER, 50, 500); // Open gripper
   if (checkEStop()) return;
 
-  moveJointAnimated(BASE2, 95, 1000);
-  if (checkEStop()) return;
-  moveJointAnimated(SHOULDER2, 100, 1000);
-  if (checkEStop()) return;
-  moveJointAnimated(ELBOW2, 90, 1000);
-  if (checkEStop()) return;
+  // moveJointAnimated(BASE2, 95, 1000);
+  // if (checkEStop()) return;
+  // moveJointAnimated(SHOULDER2, 100, 1000);
+  // if (checkEStop()) return;
+  // moveJointAnimated(ELBOW2, 90, 1000);
+  // if (checkEStop()) return;
 
   delay(500);
 
