@@ -260,3 +260,5 @@ Released under the MIT License. See [LICENSE](LICENSE).
 The camera firmware under `src/vision-AI/vison/` derives from Espressif's
 CameraWebServer example and stays under Apache 2.0. Attribution is in
 [NOTICE](NOTICE).
+
+More code which could not be pushed due to techanical issues : https://drive.google.com/drive/folders/18t1ghEhdM-ImQ_bgtWAueU-VFf12oUYz 
