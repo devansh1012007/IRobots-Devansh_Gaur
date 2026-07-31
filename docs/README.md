@@ -24,3 +24,5 @@ If you are evaluating this, [roadmap.md](roadmap.md) has the honest breakdown of
 * Angles are degrees at the servo interface and radians inside the kinematics solver. The conversion happens in one place so it is easy to audit.
 * Anything crossing the network is JSON with an explicit schema. Nothing positional, nothing implicit.
 * The language model receives numbers and returns decisions. It never produces a coordinate it was not given. See [architecture.md](architecture.md) for why this rule is not negotiable.
+
+Video explaination : https://drive.google.com/file/d/1SCJc25jkBU7YsOWZCFCaDGiPdMcZFlpp/view

@@ -150,21 +150,12 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(ESTOP_PIN), eStopISR, RISING);
 
   // --- Initialize ARM 1 to neutral ---
-<<<<<<< Updated upstream:src/micro_controller/ardunio/V1_arm_controller_full_status.ino
-  setServoAngle(BASE, 90);         delay(200);
-  setServoAngle(SHOULDER, 90);     delay(200);
-  setServoAngle(ELBOW, 90);        delay(200);
-  setServoAngle(WRIST_ROT, 0);     delay(200);
-  setServoAngle(WRIST_PITCH, 90);  delay(200);
-  setServoAngle(GRIPPER, 90);      delay(200); // Open/Neutral
-=======
   //setServoAngle(BASE, 10);         delay(500);
   setServoAngle(SHOULDER, 100);     delay(500);
   setServoAngle(ELBOW, 97);        delay(500);
   setServoAngle(WRIST_ROT, 100);     delay(500);
   // setServoAngle(WRIST_PITCH, 45);  delay(500);
   setServoAngle(GRIPPER, 90);      delay(500); // Open/Neutral // good enough open // 40- 50 for close 
->>>>>>> Stashed changes:src/micro_controller/ardunio/V1_arm_controller_full_status/V1_arm_controller_full_status.ino
 
   // --- Initialize ARM 2 to neutral ---
   setServoAngle(BASE2, 90);        delay(200);
@@ -181,16 +172,6 @@ void loop() {
   setStatusColor(0, 255, 0); // green: motors running
   Serial.println("Processing...");
 
-<<<<<<< Updated upstream:src/micro_controller/ardunio/V1_arm_controller_full_status.ino
-  // --- Sweep ARM 1 and ARM 2 to their first test position ---
-  moveJointAnimated(BASE, 45, 1000);
-  if (checkEStop()) return;
-  moveJointAnimated(SHOULDER, 60, 1000);
-  if (checkEStop()) return;
-  // moveJointAnimated(ELBOW, 50, 1000);
-  // moveJointAnimated(WRIST_ROT, 95, 500);
-  // moveJointAnimated(WRIST_PITCH, 0, 500);
-=======
   // --- Sweep ARM 1 and AR1M 2 to their first test position ---
   //moveJointAnimated(BASE, 20, 1000);
   //moveJointAnimated(BASE, 10, 1000);
@@ -205,9 +186,7 @@ void loop() {
   moveJointAnimated(WRIST_ROT, 100, 500);
   moveJointAnimated(WRIST_PITCH, 100, 500);
   moveJointAnimated(WRIST_PITCH, 20, 500);
->>>>>>> Stashed changes:src/micro_controller/ardunio/V1_arm_controller_full_status/V1_arm_controller_full_status.ino
   moveJointAnimated(GRIPPER, 40, 500); // Close gripper
-  moveJointAnimated(GRIPPER, 90, 500); // Close gripper
   if (checkEStop()) return;
 
   moveJointAnimated(BASE2, 45, 1000);
@@ -220,19 +199,6 @@ void loop() {
   delay(500);
 
   // --- Return ARM 1 and ARM 2 to their second test position ---
-<<<<<<< Updated upstream:src/micro_controller/ardunio/V1_arm_controller_full_status.ino
-  moveJointAnimated(BASE, 95, 1000);
-  if (checkEStop()) return;
-  // moveJointAnimated(SHOULDER, 100, 1000);
-  // if (checkEStop()) return;
-  // moveJointAnimated(ELBOW, 90, 1000);
-  moveJointAnimated(WRIST_ROT, 135, 500);
-  if (checkEStop()) return;
-  moveJointAnimated(WRIST_PITCH, 10, 500);
-  if (checkEStop()) return;
-  moveJointAnimated(GRIPPER, 100, 500); // Open gripper
-  if (checkEStop()) return;
-=======
   // moveJointAnimated(BASE, 95, 1000);
   // if (checkEStop()) return;
   // moveJointAnimated(SHOULDER, 100, 1000);
@@ -244,7 +210,6 @@ void loop() {
   // if (checkEStop()) return;
   // moveJointAnimated(GRIPPER, 50, 500); // Open gripper
   // if (checkEStop()) return;
->>>>>>> Stashed changes:src/micro_controller/ardunio/V1_arm_controller_full_status/V1_arm_controller_full_status.ino
 
   moveJointAnimated(BASE2, 95, 1000);
   if (checkEStop()) return;
